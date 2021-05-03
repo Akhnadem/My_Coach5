@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3020202"
+    android:background="@drawable/background_home"
 
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -13,7 +13,8 @@
         android:id="@+id/lan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/color_button"
+        android:background="@color/darkeblue"
+
         >
 
         <TextView
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Home"
+
             android:layout_gravity="center"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
@@ -34,16 +36,17 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1
-"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
+        app:itemRippleColor="@color/darkeblue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_button"
+        android:background="@color/white"
+        app:itemIconTint="@color/background"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu" />
 </LinearLayout>

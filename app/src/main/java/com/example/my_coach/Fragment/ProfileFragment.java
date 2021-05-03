@@ -37,6 +37,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
     private ProgressBar progressBar;
+    private String NameDB,ImageDB,EmaileDB,PhoneDB;
 
 
     public ProfileFragment() {
@@ -64,7 +65,20 @@ public class ProfileFragment extends Fragment {
 
 
         //intant to settings activety
-        view.findViewById(R.id.btn_sitting).setOnClickListener(v -> startActivity(new Intent(getActivity(), Sitting_Activity.class)));
+        view.findViewById(R.id.btn_sitting).setOnClickListener(v ->
+                {
+                    Intent intent=new Intent(getActivity(), Sitting_Activity.class);
+
+                    intent.putExtra("name",NameDB);
+                    intent.putExtra("image",ImageDB);
+                    intent.putExtra("email",EmaileDB);
+                    intent.putExtra("phone",PhoneDB);
+
+                    startActivity(intent);
+                }
+
+
+        );
         //onclick to send email
         view.findViewById(R.id.btn_contact).setOnClickListener(v -> sendmail());
         //onclick to open privecy
@@ -162,10 +176,10 @@ public class ProfileFragment extends Fragment {
                 if (task.isSuccessful()) {
                     DocumentSnapshot snapshot = task.getResult();
                     assert snapshot != null;
-                    String NameDB = snapshot.getString("name");
-                    String ImageDB = snapshot.getString("image");
-                    String EmailDB = snapshot.getString("email");
-                    String PhoneDB = snapshot.getString("phone");
+                     NameDB = snapshot.getString("name");
+                     ImageDB = snapshot.getString("image");
+                     EmaileDB = snapshot.getString("email");
+                     PhoneDB = snapshot.getString("phone");
 
                     UserName.setText("Welcom :" + NameDB);
 

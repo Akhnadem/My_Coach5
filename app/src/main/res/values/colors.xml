@@ -14,6 +14,8 @@
     <color name="color_button">#292562</color>
     <color name="color_white">#262262</color>
     <color name="background">#262e39</color>
+    <color name="porder">#23FFA7</color>
+    <color name="darkeblue">#20305C</color>
 
 
 </resources>

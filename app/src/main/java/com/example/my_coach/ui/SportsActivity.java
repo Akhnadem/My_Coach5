@@ -32,7 +32,6 @@ public class SportsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sports);
         progressBar = findViewById(R.id.progres_sports);
         recyclerView = findViewById(R.id.recycler_sports);
-
         firestore = FirebaseFirestore.getInstance();
 
 

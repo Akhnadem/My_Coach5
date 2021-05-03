@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Regestration extends AppCompatActivity {
+public class  Regestration extends AppCompatActivity {
 
     //view
     private EditText tedName, tedPhone, tedEmail, tedPassword, tedDate;

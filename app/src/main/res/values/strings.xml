@@ -24,14 +24,24 @@
     <string name="Favorite">favorite</string>
     <string name="Profile">profile</string>
     <string name="Chat">chat</string>
-    <string name="language">language</string>
+    <string name="language">Language</string>
     <string name="dark_mode">dark mode</string>
-    <string name="change_password">change password</string>
     <string name="settings">Settings</string>
     <string name="contact_us">Contact us</string>
     <string name="privacy">Privacy</string>
     <string name="share">Share</string>
     <string name="account">Account:</string>
     <string name="phoneSiting">Phone:</string>
+
+    <string name="change_password">Change Password</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="thme">Thme</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="engish">Engish</string>
+    <string name="arabic">arabic</string>
+    <string name="log_out">Log out</string>
+    <string name="save">save</string>
+    <string name="coach">Coach</string>
     <string name="trainee">Trainee</string>
+    <string name="forget_pass">Forget Pass?</string>
 </resources>
