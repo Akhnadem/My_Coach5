@@ -23,6 +23,8 @@ public class Splash extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+
+
        String CurrentLang = Locale.getDefault().getDisplayLanguage();
         String lang = getSharedPreferences("language",MODE_PRIVATE)
                 .getString("lang",CurrentLang);
