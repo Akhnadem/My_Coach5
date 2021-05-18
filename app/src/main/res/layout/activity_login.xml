@@ -156,6 +156,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 

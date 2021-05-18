@@ -15,10 +15,7 @@ import com.example.my_coach.ui.auth.Login;
 import java.util.Locale;
 
 public class Splash extends AppCompatActivity {
-
     private String currentlanguage, language;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +23,15 @@ public class Splash extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-
-        String CurrentLang = Locale.getDefault().getDisplayLanguage();
-
+       String CurrentLang = Locale.getDefault().getDisplayLanguage();
         String lang = getSharedPreferences("language",MODE_PRIVATE)
                 .getString("lang",CurrentLang);
-
         //language
         Locale l =new Locale(lang);
         Locale.setDefault(l);
         Configuration configuration=new Configuration();
         configuration.locale=l;
         getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
-
         new Handler().postDelayed(() -> {
 
             startActivity(new Intent(Splash.this, Login.class));

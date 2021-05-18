@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/shapetext_cardview"
     tools:context=".Sitting_Activity">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:background="@color/color_button"
+            android:background="@color/darkeblue"
             android:orientation="vertical">
 
             <ImageView
@@ -64,11 +64,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@drawable/shapetext_cardview"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="190dp"
@@ -76,16 +77,18 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:text="@string/email"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/black"
                         android:textSize="30sp"/>
                     <TextView
                         android:id="@+id/User_Email_Sitting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+
                         android:layout_weight="1"
+                        android:padding="10dp"
                         android:text=""
-                        android:textColor="@color/blue"
+                        android:textColor="@color/black"
                         android:textSize="25sp" />
 
 
@@ -128,11 +131,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@drawable/shapetext_cardview"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="200dp"
@@ -140,7 +144,7 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:text="@string/phone"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/black"
                         android:textSize="30sp"/>
                     <TextView
                         android:id="@+id/User_Phone_Sitting"
@@ -149,7 +153,7 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:text=""
-                        android:textColor="@color/blue"
+                        android:textColor="@color/black"
                         android:textSize="25sp" />
 
 
@@ -192,7 +196,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@drawable/shapetext_cardview"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
@@ -200,7 +204,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:text="Sittings"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/black"
                     android:textSize="30sp"/>
                 <LinearLayout
                     android:id="@+id/btn_UpdateProfile"
@@ -232,7 +236,7 @@
                                android:layout_height="wrap_content"
                                android:padding="8dp"
                                android:text="@string/update_profile"
-                               android:textColor="@color/blue"
+                               android:textColor="@color/black"
                                android:textSize="25sp"
                                android:textStyle="bold" />
                            <View
@@ -279,7 +283,7 @@
                                android:layout_height="wrap_content"
                                android:padding="8dp"
                                android:text="@string/change_password"
-                               android:textColor="@color/blue"
+                               android:textColor="@color/black"
                                android:textSize="25sp"
                                android:textStyle="bold" />
                            <View
@@ -325,7 +329,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/language"
-                                android:textColor="@color/blue"
+                                android:textColor="@color/black"
                                 android:textSize="25sp"
                                 android:textStyle="bold" />
                             <TextView
@@ -333,7 +337,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="English"
-                                android:textColor="@color/blue"
+                                android:textColor="@color/black"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
                             <View
@@ -385,14 +389,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/thme"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dark_mode"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -430,6 +434,7 @@
 
     </LinearLayout>
     <ImageView
+        android:id="@+id/Update_user_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="115dp"

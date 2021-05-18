@@ -43,4 +43,7 @@
     <string name="save">حفظ</string>
     <string name="coach">مدرب</string>
     <string name="forget_pass">نسيت كلمةالسر؟</string>
+    <string name="forget_password">هل نسيت كلمة السر</string>
+    <string name="enter_your_email">أدخل بريدك الإلكتروني</string>
+    <string name="restor_your_password">استعادة كلمة المرور الخاصة بك</string>
 </resources>

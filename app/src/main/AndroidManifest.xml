@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.my_coach">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -10,20 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Coach">
-        <activity android:name=".ui.SportsActivity"></activity>
-        <activity android:name=".sport.bodybulding.Swimming.Swimming" />
-        <activity android:name=".sport.MentalSports.MentalSportsActivity" />
-        <activity android:name=".sport.MentalSports.Sudoku.Sudoku" />
-        <activity android:name=".sport.MentalSports.Chess.Chess" />
-        <activity android:name=".sport.MartialArts.MartialArtsActivity" />
-        <activity android:name=".sport.MartialArts.Karate.Karate" />
-        <activity android:name=".sport.MartialArts.KungFu.KungFu" />
-        <activity android:name=".sport.MartialArts.Boxing.Boxing1" />
-        <activity android:name=".sport.bodybulding.bodybuilding_Activity" />
+        <activity android:name=".sport.SportsProperties.SportsSpecificationsActivity"/>
+        <activity android:name=".ui.auth.ForgetPasswordActivity" />
+        <activity android:name=".ui.SportsActivity" />
+
         <activity android:name=".Sitting_Activity" />
         <activity android:name=".ui.auth.Regestration" />
-        <activity android:name=".sport.bodybulding.Running.Running" />
-        <activity android:name=".sport.bodybulding.WigehtLifeThing.WigehtLifeThing" />
+
         <activity android:name=".ui.auth.Login" />
         <activity android:name=".ui.Splash">
             <intent-filter>
@@ -33,6 +30,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <service
+            android:name=".data.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

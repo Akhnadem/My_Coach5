@@ -8,12 +8,16 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.my_coach.MainActivity;
 import com.example.my_coach.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class Login extends AppCompatActivity {
 
@@ -25,6 +29,7 @@ public class Login extends AppCompatActivity {
 
 
     //firebase
+    private FirebaseFirestore db;
     private FirebaseAuth lfirebaseAuth;
 
     @Override
@@ -39,10 +44,13 @@ public class Login extends AppCompatActivity {
 
         //firebase
         lfirebaseAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         //Tntent to Registration activity
         findViewById(R.id.creat).setOnClickListener(v -> startActivity(new Intent(Login.this, Regestration.class)));
 
+        //Tntent to ForgetPasseord activity
+        findViewById(R.id.forget).setOnClickListener(v -> startActivity(new Intent(Login.this, ForgetPasswordActivity.class)));
 
         //on click to login
         findViewById(R.id.l_login).setOnClickListener(v1 -> {
@@ -84,22 +92,42 @@ public class Login extends AppCompatActivity {
         lfirebaseAuth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        db.collection("users")
+                                .whereEqualTo("id", task.getResult().getUser().getUid())
+                                .addSnapshotListener((value, error) -> {
+                                    if (error == null) {
+                                        if (value == null) {
+                                            lprogressBar.setVisibility(View.GONE);
+                                            Toast.makeText(this, "No Result", Toast.LENGTH_SHORT).show();
+                                        } else {
+
+                                            for (DocumentChange documentChange : value.getDocumentChanges()) {
+                                                boolean isCoach = documentChange.getDocument().getBoolean("coach");
+
+                                                if (lremember.isChecked()) {
+                                                    getSharedPreferences("Login", MODE_PRIVATE)
+                                                            .edit()
+                                                            .putBoolean("islogin", true)
+                                                            .apply();
+                                                }
+                                                getSharedPreferences("user", MODE_PRIVATE)
+                                                        .edit()
+                                                        .putBoolean("isCoach",isCoach)
+                                                        .putString("user_id", task.getResult().getUser().getUid())
+                                                        .apply();
+                                                gotMain();
+                                            }
+                                            lprogressBar.setVisibility(View.GONE);
+                                        }
+
+                                    } else {
+                                        lprogressBar.setVisibility(View.GONE);
+                                        Toast.makeText(this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
 
 
-                        lprogressBar.setVisibility(View.GONE);
+                                });
 
-                        if (lremember.isChecked()) {
-                            getSharedPreferences("Login", MODE_PRIVATE)
-                                    .edit()
-                                    .putBoolean("islogin", true)
-                                    .apply();
-                        }
-                        getSharedPreferences("user", MODE_PRIVATE)
-                                .edit()
-                                .putBoolean("isCoach", true)
-                                .putString("user_id",task.getResult().getUser().getUid())
-                                .apply();
-                        gotMain();
 
                     } else {
                         lprogressBar.setVisibility(View.GONE);
@@ -136,3 +164,4 @@ public class Login extends AppCompatActivity {
         finish();
     }
 }
+

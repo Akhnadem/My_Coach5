@@ -104,6 +104,10 @@ public class ProfileFragment extends Fragment {
                                 .edit()
                                 .clear()
                                 .apply();
+                        getActivity().getSharedPreferences("user", MODE_PRIVATE)
+                                .edit()
+                                .clear()
+                                .apply();
                         firebaseAuth.signOut();
                         startActivity(new Intent(getActivity(), Splash.class));
                         getActivity().finish();

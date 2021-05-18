@@ -3,30 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/homeFrag">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/homeFrag"
-        android:name="com.example.my_coach.Fragment.SprtsType.HomeFrag"
+        android:id="@+id/nav_home"
+        android:name="com.example.my_coach.Fragment.SprtsType.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/nav_search"
         android:name="com.example.my_coach.Fragment.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/nave_favorite"
         android:name="com.example.my_coach.Fragment.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/nav_person"
         android:name="com.example.my_coach.Fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/chatFragment"
+        android:id="@+id/nav_chat"
         android:name="com.example.my_coach.Fragment.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />

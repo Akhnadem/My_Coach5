@@ -138,8 +138,8 @@ public class  Regestration extends AppCompatActivity {
     private void saveUserData() {
         if (tedCoch.isChecked()){
             isCoach=true;
-
-        }else if (tedTraine.isChecked()){
+        }
+        if (tedTraine.isChecked()){
             isCoach=false;
 
         }
@@ -153,7 +153,7 @@ public class  Regestration extends AppCompatActivity {
             user.put("name",tedName.getText().toString().trim());
             user.put("phone",tedPhone.getText().toString().trim());
             user.put("email",tedEmail.getText().toString().trim());
-            user.put("isCoach",isCoach);
+            user.put("coach",isCoach);
             user.put("password",tedPassword.getText().toString().trim());
             user.put("Date",tedDate.getText().toString().trim());
             user.put("image","null");

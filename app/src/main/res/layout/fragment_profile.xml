@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/shapetext_cardview"
     tools:context=".Fragment.ProfileFragment">
 
    <LinearLayout
@@ -64,7 +64,7 @@
                    android:layout_height="wrap_content"
                    android:padding="8dp"
                    android:text="@string/settings"
-                   android:textColor="@color/blue"
+                   android:textColor="@color/white"
                    android:textSize="25sp"
                    android:textStyle="bold" />
 
@@ -96,7 +96,7 @@
                    android:padding="8dp"
                    android:text="@string/contact_us"
                    android:textSize="25sp"
-                   android:textColor="@color/blue"
+                   android:textColor="@color/white"
                    android:textStyle="bold"/>
 
            </LinearLayout>
@@ -127,7 +127,7 @@
                    android:padding="8dp"
                    android:text="@string/privacy"
                    android:textSize="25sp"
-                   android:textColor="@color/blue"
+                   android:textColor="@color/white"
                    android:textStyle="bold"/>
 
            </LinearLayout>
@@ -156,7 +156,7 @@
                    android:layout_height="wrap_content"
                    android:padding="8dp"
                    android:text="@string/share"
-                   android:textColor="@color/blue"
+                   android:textColor="@color/white"
                    android:textSize="25sp"
                    android:textStyle="bold" />
 

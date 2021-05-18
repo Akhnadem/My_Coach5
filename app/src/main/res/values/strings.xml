@@ -44,4 +44,8 @@
     <string name="coach">Coach</string>
     <string name="trainee">Trainee</string>
     <string name="forget_pass">Forget Pass?</string>
+    <string name="forget_password">forget password</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="restor_your_password">Restor Your Password</string>
+    <string name="default_notification_channel_id" translatable="false">Notification</string>
 </resources>

@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.my_coach.Model.SportModel;
 import com.example.my_coach.R;
@@ -25,13 +26,16 @@ public class SportsActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private List<SportModel> list;
     private SportAdapter adapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private Boolean isFirstOpen=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sports);
-        progressBar = findViewById(R.id.progres_sports);
-        recyclerView = findViewById(R.id.recycler_sports);
+        progressBar = findViewById(R.id.progres_sports_categories);
+        swipeRefreshLayout = findViewById(R.id.SwipSports);
+        recyclerView = findViewById(R.id.recycler_sports_categories);
         firestore = FirebaseFirestore.getInstance();
 
 
@@ -43,6 +47,18 @@ public class SportsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         getSportsData();
+        swipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor( R.color.color_button),
+                getResources().getColor( R.color.blue),
+                getResources().getColor( R.color.white)
+        );
+
+        getSportsData();
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            
+            getSportsData();
+            swipeRefreshLayout.setRefreshing(false);
+        });
     }
 
     private void getSportsData() {
@@ -59,6 +75,8 @@ public class SportsActivity extends AppCompatActivity {
                             Toast.makeText(this, "value is null", Toast.LENGTH_SHORT).show();
                         } else {
                             for (DocumentChange documentChange : value.getDocumentChanges()) {
+                                if (!isFirstOpen)
+                                    list.clear();
                                 String ID = documentChange.getDocument().getString("category_id");
 
                                 assert ID != null;
