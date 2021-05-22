@@ -38,6 +38,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseFirestore firestore;
     private ProgressBar progressBar;
     private String NameDB,ImageDB,EmaileDB,PhoneDB;
+    private String GetCoach_id;
 
 
     public ProfileFragment() {
@@ -60,6 +61,10 @@ public class ProfileFragment extends Fragment {
         progressBar = view.findViewById(R.id.ProgressBarProfil);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+
+
+      //  Intent intentr=get
+     //   GetCoach_id=
 
         GetUserData();
 

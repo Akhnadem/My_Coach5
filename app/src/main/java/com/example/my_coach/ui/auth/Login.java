@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         //Tntent to Registration activity
-        findViewById(R.id.creat).setOnClickListener(v -> startActivity(new Intent(Login.this, Regestration.class)));
+        findViewById(R.id.creat).setOnClickListener(v -> startActivity(new Intent(Login.this, Registration.class)));
 
         //Tntent to ForgetPasseord activity
         findViewById(R.id.forget).setOnClickListener(v -> startActivity(new Intent(Login.this, ForgetPasswordActivity.class)));

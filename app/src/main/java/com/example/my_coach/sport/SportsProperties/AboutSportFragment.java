@@ -4,33 +4,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.my_coach.Model.AbouteSportModel;
 import com.example.my_coach.R;
-import com.example.my_coach.adapter.AbouteSportAdapter;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class AboutSportFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private ProgressBar progressBar;
-    private AbouteSportAdapter adapter;
-    private List<AbouteSportModel> list;
+    private ImageView imageView;
+    private TextView textView;
+
     private FirebaseFirestore firestore;
-    private String GetSportBriefID;
+
 
 
 
@@ -51,49 +45,51 @@ public class AboutSportFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView=view.findViewById(R.id.recycler_Aboute_sport);
-        progressBar=view.findViewById(R.id.progres_About_Sorte);
-        Toast.makeText(getActivity(), SportsSpecificationsActivity.UID, Toast.LENGTH_LONG).show();
+        imageView=view.findViewById(R.id.SportBrief_Image);
+        textView=view.findViewById(R.id.SportBrief_Brief);
+
         firestore=FirebaseFirestore.getInstance();
 
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        list=new ArrayList<>();
-        adapter=new AbouteSportAdapter(getActivity(),list);
-        recyclerView.setAdapter(adapter);
+
         getSportsData();
 
     }
 
     private void getSportsData() {
-        progressBar.setVisibility(View.VISIBLE);
-        firestore.collection("aboute_sport").whereEqualTo("sport_id",SportsSpecificationsActivity.UID)
-                .orderBy("sport_id", Query.Direction.ASCENDING)
+
+        firestore.collection("aboute_sport")
+                .whereEqualTo("sport_id",SportsSpecificationsActivity.UID)
                 .addSnapshotListener((value, error) -> {
 
                     if (error==null){
 
                         if (value==null){
-                            progressBar.setVisibility(View.GONE);
+
                             Toast.makeText(getActivity(), "value is null", Toast.LENGTH_SHORT).show();
                         }else {
 
 
                             for (DocumentChange documentChange:value.getDocumentChanges()){
-                                String SportID =documentChange.getDocument().getString("sport_id");
-
                                 AbouteSportModel model=documentChange.getDocument().toObject(AbouteSportModel.class);
-                                list.add(model);
-                                adapter.notifyDataSetChanged();
+                                if (!model.getSport_brief ().isEmpty ()){
+                                    textView.setText (model.getSport_brief ());
+                                }
+
+                              if (!model.getSport_image ().isEmpty ()){
+                                  Glide.with(getActivity ())
+                                          .load(model.getSport_image ())
+                                          .placeholder(R.drawable.graduation_project_logo)
+                                          .into(imageView);
+                              }
                             }
-                            progressBar.setVisibility(View.GONE);
+                   //         progressBar.setVisibility(View.GONE);
                         }
 
 
                     }else {
-                        progressBar.setVisibility(View.GONE);
+                    //    progressBar.setVisibility(View.GONE);
                         Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 

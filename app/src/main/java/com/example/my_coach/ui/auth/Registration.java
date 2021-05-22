@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class  Regestration extends AppCompatActivity {
+public class Registration extends AppCompatActivity {
 
     //view
     private EditText tedName, tedPhone, tedEmail, tedPassword, tedDate;
@@ -58,7 +58,7 @@ public class  Regestration extends AppCompatActivity {
         });
         //on click to finesh this fragment
         findViewById(R.id.rt_back).setOnClickListener(v -> {
-            startActivity(new Intent(Regestration.this, Login.class));
+            startActivity(new Intent(Registration.this, Login.class));
 
         });
     }
@@ -165,13 +165,13 @@ public class  Regestration extends AppCompatActivity {
 
                         if (task.isSuccessful()){
                             tprogressBar.setVisibility(View.GONE);
-                            new AlertDialog.Builder(Regestration.this)
+                            new AlertDialog.Builder(Registration.this)
                                     .setTitle("Congratulations")
                                     .setMessage("Account Created Successfuly")
                                     .setCancelable(false)
                                     .setPositiveButton("ok", (dialog, which) -> {
 
-                                        startActivity(new Intent(Regestration.this,Login.class));
+                                        startActivity(new Intent(Registration.this,Login.class));
 
                                     })
                                     .create().show();
@@ -189,7 +189,7 @@ public class  Regestration extends AppCompatActivity {
     }
 
     void showAlert(String msg ){
-        new AlertDialog.Builder(Regestration.this)
+        new AlertDialog.Builder(Registration.this)
                 .setTitle("Error")
                 .setMessage(msg).
                 setPositiveButton("ok",null)
