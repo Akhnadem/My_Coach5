@@ -26,6 +26,7 @@ public class Registration extends AppCompatActivity {
     private RadioButton tedCoch,tedTraine;
     boolean isCoach;
 
+
     //firebase
     private FirebaseAuth tfirebaseAuth;
     private FirebaseFirestore firestore;

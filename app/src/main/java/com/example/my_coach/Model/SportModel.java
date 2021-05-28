@@ -6,14 +6,15 @@ public class SportModel {
     private String name ;
     private String image ;
 
-    public SportModel() {
-    }
+
 
     public SportModel(String id, String category_id, String name, String image) {
         this.id = id;
         this.category_id = category_id;
         this.name = name;
         this.image = image;
+    }
+    public SportModel() {
     }
 
     public String getId() {

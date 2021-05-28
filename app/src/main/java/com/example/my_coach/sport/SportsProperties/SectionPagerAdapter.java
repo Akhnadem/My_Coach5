@@ -19,6 +19,7 @@ public  class SectionPagerAdapter extends FragmentPagerAdapter {
 
                 return new  CoachesFragment();
             case 2:
+                return new ExerciseFragment ();
             default:
                 return new  ExerciseFragment();
         }

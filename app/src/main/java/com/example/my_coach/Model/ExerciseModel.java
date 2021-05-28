@@ -1,27 +1,28 @@
 package com.example.my_coach.Model;
 
 public class ExerciseModel {
-    private String exercise_name;
+    private String name;
     private String id;
     private String image;
     private String sport_id;
 
-    public ExerciseModel(String exercise_name, String id, String image, String sport_id) {
-        this.exercise_name = exercise_name;
+
+    public ExerciseModel() {
+    }
+
+    public ExerciseModel(String name, String id, String image, String sport_id) {
+        this.name = name;
         this.id = id;
         this.image = image;
         this.sport_id = sport_id;
     }
 
-    public ExerciseModel() {
+    public String getName() {
+        return name;
     }
 
-    public String getExercise_name() {
-        return exercise_name;
-    }
-
-    public void setExercise_name(String exercise_name) {
-        this.exercise_name = exercise_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getId() {

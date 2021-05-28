@@ -19,7 +19,6 @@
  import com.example.my_coach.adapter.SportAdapter;
  import com.google.firebase.firestore.DocumentChange;
  import com.google.firebase.firestore.FirebaseFirestore;
- import com.google.firebase.firestore.Query;
 
  import java.util.ArrayList;
  import java.util.List;
@@ -67,7 +66,6 @@ public class CoachesFragment extends Fragment {
     private void GetCoachesData() {
         progressBar.setVisibility (View.VISIBLE);
         firestore.collection ("coach_sport")
-                .orderBy("sport_id", Query.Direction.ASCENDING)
                 .whereEqualTo ("sport_id", SportAdapter.UID)
                 .addSnapshotListener ((value, error) -> {
 

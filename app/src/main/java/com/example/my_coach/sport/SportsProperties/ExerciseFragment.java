@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.my_coach.Model.ExerciseModel;
 import com.example.my_coach.R;
 import com.example.my_coach.adapter.ExerciseAdapter;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -28,13 +30,7 @@ public class ExerciseFragment extends Fragment {
     private FirebaseFirestore firestore;
     private List<ExerciseModel> list;
     private ExerciseAdapter adapter;
-
     private Boolean isFirstOpen=true;
-
-    public ExerciseFragment() {
-        // Required empty public constructor
-    }
-
 
 
 
@@ -59,5 +55,45 @@ public class ExerciseFragment extends Fragment {
         list = new ArrayList<> ();
         adapter = new ExerciseAdapter ( getActivity (), list);
         recyclerView.setAdapter(adapter);
+
+        GetEData ();
+    }
+    private void GetEData() {
+        progressBar.setVisibility (View.VISIBLE);
+        firestore.collection ("sports_exercise")
+               // .whereEqualTo ("sport_id", SportAdapter.UID)
+                .addSnapshotListener ((value, error) -> {
+
+                    if (error == null) {
+
+                        if (value == null) {
+                            progressBar.setVisibility (View.GONE);
+
+                            Toast.makeText (getActivity (), "value is null", Toast.LENGTH_SHORT).show ();
+                        } else {
+                            for (DocumentChange documentChange : value.getDocumentChanges ()) {
+                                if (!isFirstOpen)
+                                    list.clear ();
+
+                                ExerciseModel model = documentChange.getDocument ().toObject (ExerciseModel.class);
+                                list.add (model);
+
+                                adapter.notifyDataSetChanged ();
+
+
+                            }
+
+                            progressBar.setVisibility (View.GONE);
+                        }
+
+
+                    } else {
+                        progressBar.setVisibility (View.GONE);
+
+                        Toast.makeText (getActivity (), error.getMessage (), Toast.LENGTH_SHORT).show ();
+                    }
+
+
+                });
     }
 }

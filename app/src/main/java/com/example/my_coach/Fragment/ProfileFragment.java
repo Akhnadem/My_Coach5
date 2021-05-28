@@ -38,7 +38,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseFirestore firestore;
     private ProgressBar progressBar;
     private String NameDB,ImageDB,EmaileDB,PhoneDB;
-    private String GetCoach_id;
+
 
 
     public ProfileFragment() {

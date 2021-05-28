@@ -8,14 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.my_coach.Fragment.ProfileFragment;
 import com.example.my_coach.Model.CoachesModel;
+import com.example.my_coach.ProfileActivity;
 import com.example.my_coach.R;
 
 import java.util.List;
@@ -39,16 +38,14 @@ public class CoachesAdapter extends RecyclerView.Adapter<CoachesAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull CoachesAdapter.ViewHolder holder, int position) {
         CoachesModel model = list.get(position);
-        Toast.makeText (context, model.getId (), Toast.LENGTH_SHORT).show ();
+
         holder.setCoachName (model.getCoach_name ());
         holder.setSportsName(model.getSport_name ());
         holder.setTrainningPrice (model.getSport_price ());
         holder.setCoachImage (model.getCoach_image ());
 
         holder.layout.setOnClickListener(v -> {
-
-
-            Intent intent = new Intent(context, ProfileFragment.class);
+            Intent intent = new Intent(context, ProfileActivity.class);
             intent.putExtra("coach_id",model.getCoach_id ());
             context.startActivity(intent);
 
@@ -78,7 +75,7 @@ public class CoachesAdapter extends RecyclerView.Adapter<CoachesAdapter.ViewHold
             CoachImage = itemView.findViewById(R.id.categories_Sports_image);
         }
         void setCoachName(String name_coach) {
-            SportsName.setText(name_coach);
+            CoachName .setText(name_coach);
         }
         void setSportsName(String name_sport) {
             SportsName.setText(name_sport);
