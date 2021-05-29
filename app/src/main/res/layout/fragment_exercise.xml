@@ -8,14 +8,19 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_Exercise"
         android:layout_width="match_parent"
-       android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        tools:listitem="@layout/formate_exercise"
-        android:layout_alignParentEnd="true"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_Exercise"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="-1dp"
+        tools:listitem="@layout/formate_exercise" />
+
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

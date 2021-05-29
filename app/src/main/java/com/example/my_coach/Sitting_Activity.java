@@ -25,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.example.my_coach.ui.Splash;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,6 +59,7 @@ public class Sitting_Activity extends AppCompatActivity {
     private StorageReference storageReference;
     private String userID;
     private ProgressDialog progressDialog;
+    private SwitchMaterial Switch_Theme_Sitting;
 
 
     @Override
@@ -72,6 +74,7 @@ public class Sitting_Activity extends AppCompatActivity {
         UserPhone=findViewById(R.id.User_Phone_Sitting);
         selectedLang=findViewById(R.id.selectedLang);
         Update_user_image=findViewById(R.id.Update_user_image);
+
 
         //firestor
         firebaseAuth = FirebaseAuth.getInstance();
