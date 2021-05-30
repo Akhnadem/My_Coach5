@@ -131,7 +131,7 @@
             >
 
 
-            <EditText
+            <Button
                 android:id="@+id/rt_dat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,10 +139,13 @@
                 android:drawableStart="@drawable/ic_dae"
                 android:drawablePadding="10dp"
                 android:hint="@string/date_of_birth"
+                android:onClick="openDatePiker"
+                style="?android:spinnerStyle"
                 android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 android:inputType="date"
-                android:padding="10dp" />
+                android:padding="10dp"
+                tools:ignore="OnClick" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout

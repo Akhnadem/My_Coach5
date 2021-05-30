@@ -13,9 +13,9 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/cardview_b"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+android:background="@drawable/cardview_b"
         android:orientation="vertical">
 
         <LinearLayout
@@ -28,7 +28,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/test"
+
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -43,7 +43,7 @@
             app:civ_border_width="3dp"/>
         <TextView
             android:id="@+id/User_Name_coach"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="mngbum"

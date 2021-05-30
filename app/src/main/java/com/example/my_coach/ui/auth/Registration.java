@@ -1,10 +1,13 @@
 package com.example.my_coach.ui.auth;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -15,17 +18,19 @@ import com.example.my_coach.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Registration extends AppCompatActivity {
 
     //view
-    private EditText tedName, tedPhone, tedEmail, tedPassword, tedDate;
+    private EditText tedName, tedPhone, tedEmail, tedPassword;
     private ProgressBar tprogressBar;
     private RadioButton tedCoch,tedTraine;
     boolean isCoach;
-
+    private DatePickerDialog datePickerDialog;
+    private Button dateButton;
 
     //firebase
     private FirebaseAuth tfirebaseAuth;
@@ -41,10 +46,12 @@ public class Registration extends AppCompatActivity {
         tedPhone = findViewById(R.id.rt_phone);
         tedEmail = findViewById(R.id.rt_email);
         tedPassword =  findViewById(R.id.rt_pass);
-        tedDate = findViewById(R.id.rt_dat);
+        dateButton = findViewById(R.id.rt_dat);
         tprogressBar=findViewById(R.id.tr_progres);
         tedCoch=findViewById(R.id.rb_Coach);
         tedTraine=findViewById(R.id.rb_Trainee);
+        dateButton.setText (getTodaysDate());
+        iniDatePikker();
 
         //firebase
         tfirebaseAuth=FirebaseAuth.getInstance();
@@ -63,13 +70,78 @@ public class Registration extends AppCompatActivity {
 
         });
     }
+    private String getTodaysDate() {
+        Calendar cal=Calendar.getInstance ();
+        int year=cal.get (Calendar.YEAR);
+        int month=cal.get (Calendar.MONTH);
+        month=month +1;
+        int day=cal.get (Calendar.DAY_OF_MONTH);
+        return MakeDateString (day,month,year);
+    }
+    private void iniDatePikker() {
+        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener () {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
+                month=month +1;
+                String dat= MakeDateString (day,month,year);
+                dateButton.setText (dat);
+
+            }
+        };
+        Calendar cal=Calendar.getInstance ();
+        int year=cal.get (Calendar.YEAR);
+        int month=cal.get (Calendar.MONTH);
+        int day=cal.get (Calendar.DAY_OF_MONTH);
+
+        int style= AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog=new DatePickerDialog (this,style,dateSetListener,year,month,day);
+        datePickerDialog.getDatePicker ().setMaxDate (System.currentTimeMillis ());
+    }
+    private String MakeDateString(int day, int month, int year) {
+        return getMonthformate (month)+" "+day+" "+year;
+
+    }
+
+    private String getMonthformate(int month) {
+        if (month==1)
+            return "JAN";
+        if (month==2)
+            return "FEB";
+        if (month==3)
+            return "MAR";
+        if (month==4)
+            return "APR";
+        if (month==5)
+            return "MAY";
+        if (month==6)
+            return "JuN";
+        if (month==7)
+            return "Jul";
+        if (month==8)
+            return "AUG";
+        if (month==9)
+            return "SEP";
+        if (month==10)
+            return "OCT";
+        if (month==11)
+            return "NOV";
+        if (month==12)
+            return "DEC";
+        //defult
+        return "JAN";
+    }
+
+    public void openDatePiker(View view) {
+        datePickerDialog.show ();
+    }
     private void validationdata() {
         String tname = tedName.getText().toString().trim();
         String tphone = tedPhone.getText().toString().trim();
         String temail = tedEmail.getText().toString().trim();
         String tpass = tedPassword.getText().toString().trim();
-        String tdat = tedDate.getText().toString().trim();
+        String tdat = dateButton.getText().toString().trim();
 
 
 
@@ -111,7 +183,7 @@ public class Registration extends AppCompatActivity {
         }
 
         if (tdat.isEmpty()) {
-            tedDate.requestFocus();
+            dateButton.requestFocus();
             showAlert("Date_of_birth is required");
             return;
         }
@@ -156,7 +228,7 @@ public class Registration extends AppCompatActivity {
             user.put("email",tedEmail.getText().toString().trim());
             user.put("coach",isCoach);
             user.put("password",tedPassword.getText().toString().trim());
-            user.put("Date",tedDate.getText().toString().trim());
+            user.put("Date",dateButton.getText().toString().trim());
             user.put("image","null");
 
             firestore.collection("users")
