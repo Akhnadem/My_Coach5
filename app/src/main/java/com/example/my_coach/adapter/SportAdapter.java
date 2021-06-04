@@ -17,6 +17,7 @@ import com.example.my_coach.Model.SportModel;
 import com.example.my_coach.R;
 import com.example.my_coach.sport.SportsProperties.SportsSpecificationsActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SportAdapter extends RecyclerView.Adapter<SportAdapter.ViewHolder> {
@@ -56,6 +57,10 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+    public void filterlist(ArrayList<SportModel> filterdList){
+        list=filterdList;
+        notifyDataSetChanged ();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

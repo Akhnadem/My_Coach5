@@ -1,7 +1,10 @@
 package com.example.my_coach.ui;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class SportsActivity extends AppCompatActivity {
     private SportAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Boolean isFirstOpen=true;
+    private EditText SearchBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class SportsActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.SwipSports);
         recyclerView = findViewById(R.id.recycler_sports_categories);
         firestore = FirebaseFirestore.getInstance();
+        SearchBox=findViewById (R.id.search_Sport);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,6 +50,24 @@ public class SportsActivity extends AppCompatActivity {
 
         adapter = new SportAdapter(this, list);
         recyclerView.setAdapter(adapter);
+         SearchBox.addTextChangedListener (new TextWatcher () {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString ());
+            }
+
+
+         });
 
         getSportsData();
         swipeRefreshLayout.setColorSchemeColors(
@@ -59,6 +82,15 @@ public class SportsActivity extends AppCompatActivity {
             getSportsData();
             swipeRefreshLayout.setRefreshing(false);
         });
+    }
+    private void filter(String text) {
+        ArrayList<SportModel> filterdList=new ArrayList<> ();
+        for (SportModel sportModel :list){
+            if (sportModel.getName ().toLowerCase ().contains (text.toLowerCase ())){
+                filterdList.add(sportModel);
+            }
+        }
+        adapter.filterlist(filterdList);
     }
 
     private void getSportsData() {

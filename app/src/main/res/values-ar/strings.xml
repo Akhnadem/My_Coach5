@@ -46,5 +46,6 @@
     <string name="forget_password">هل نسيت كلمة السر</string>
     <string name="enter_your_email">أدخل بريدك الإلكتروني</string>
     <string name="restor_your_password">استعادة كلمة المرور الخاصة بك</string>
-
+    <string name="enter_the_category_name">أدخل اسم الفئة</string>
+    <string name="enter_the_sport_name">أدخل اسم الرياضة</string>
 </resources>

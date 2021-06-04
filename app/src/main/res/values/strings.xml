@@ -48,5 +48,7 @@
     <string name="enter_your_email">Enter your Email</string>
     <string name="restor_your_password">Restor Your Password</string>
     <string name="default_notification_channel_id" translatable="false">Notification</string>
+    <string name="enter_the_category_name">Enter the Category name</string>
+    <string name="enter_the_sport_name">Enter the Sport name</string>
 
 </resources>

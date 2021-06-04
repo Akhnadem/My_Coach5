@@ -17,15 +17,19 @@ import com.example.my_coach.Model.CategoriesModel;
 import com.example.my_coach.R;
 import com.example.my_coach.ui.SportsActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SportsCategoriesAdapter extends RecyclerView.Adapter<SportsCategoriesAdapter.ViewHolder> {
     public Context context;
     private List<CategoriesModel> list;
+   
 
     public SportsCategoriesAdapter(Context context, List<CategoriesModel> list) {
         this.context = context;
         this.list = list;
+
+
     }
 
     @NonNull
@@ -50,6 +54,11 @@ public class SportsCategoriesAdapter extends RecyclerView.Adapter<SportsCategori
 
     @Override
     public int getItemCount() { return list.size(); }
+
+    public void filterlist(ArrayList<CategoriesModel>filterdList){
+        list=filterdList;
+        notifyDataSetChanged ();
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView CategoriesSportsName;

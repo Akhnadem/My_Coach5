@@ -10,10 +10,34 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <EditText
+            android:id="@+id/search_Sport"
+            android:inputType="textAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            android:hint="@string/enter_the_sport_name"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:paddingStart="10dp"
+            android:drawableStart="@drawable/ic_nav_search"
+            android:drawablePadding="10dp"
+            android:background="@drawable/shapetext_r"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/recycler_sports_categories"/>
+        </LinearLayout>
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

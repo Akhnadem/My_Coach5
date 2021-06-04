@@ -1,9 +1,12 @@
 package com.example.my_coach.Fragment.SprtsType;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -34,6 +37,7 @@ public class HomeFragment extends Fragment {
     private FirebaseFirestore firestore;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Boolean isFirstOpen=true;
+    private EditText SearchBox;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -52,6 +56,8 @@ public class HomeFragment extends Fragment {
         recyclerView=view.findViewById(R.id.recycler_sports_categories);
         progressBar=view.findViewById(R.id.progres_sports_categories);
         swipeRefreshLayout=view.findViewById(R.id.SwipCategories);
+        SearchBox=view.findViewById (R.id.search_SportsCategory);
+
 
         firestore=FirebaseFirestore.getInstance();
 
@@ -61,6 +67,27 @@ public class HomeFragment extends Fragment {
         list=new ArrayList<>();
         adapter=new SportsCategoriesAdapter(getActivity(),list);
         recyclerView.setAdapter(adapter);
+
+        SearchBox.addTextChangedListener (new TextWatcher () {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               // adapter.filter (s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                filter(s.toString ());
+            }
+
+        });
+
+
 
         swipeRefreshLayout.setColorSchemeColors(
             getResources().getColor( R.color.color_button),
@@ -75,6 +102,15 @@ public class HomeFragment extends Fragment {
             getSportsData();
             swipeRefreshLayout.setRefreshing(false);
         });
+    }
+    private void  filter(String text){
+        ArrayList<CategoriesModel> filterdList=new ArrayList<> ();
+        for (CategoriesModel categoriesModel :list){
+            if (categoriesModel.getName ().toLowerCase ().contains (text.toLowerCase ())){
+                filterdList.add(categoriesModel);
+            }
+        }
+        adapter.filterlist(filterdList);
     }
 
     private void getSportsData(){

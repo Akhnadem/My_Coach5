@@ -17,6 +17,7 @@ import com.example.my_coach.Model.CoachesModel;
 import com.example.my_coach.ProfileActivity;
 import com.example.my_coach.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CoachesAdapter extends RecyclerView.Adapter<CoachesAdapter.ViewHolder> {
@@ -57,6 +58,10 @@ public class CoachesAdapter extends RecyclerView.Adapter<CoachesAdapter.ViewHold
     @Override
     public int getItemCount() {
         return list.size();
+    }
+    public void filterlist(ArrayList<CoachesModel> filterdList){
+        list=filterdList;
+        notifyDataSetChanged ();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
