@@ -19,7 +19,7 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
 
     //view
@@ -47,10 +47,10 @@ public class Login extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         //Tntent to Registration activity
-        findViewById(R.id.creat).setOnClickListener(v -> startActivity(new Intent(Login.this, Registration.class)));
+        findViewById(R.id.creat).setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegistrationActivity.class)));
 
         //Tntent to ForgetPasseord activity
-        findViewById(R.id.forget).setOnClickListener(v -> startActivity(new Intent(Login.this, ForgetPasswordActivity.class)));
+        findViewById(R.id.forget).setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class)));
 
         //on click to login
         findViewById(R.id.l_login).setOnClickListener(v1 -> {
@@ -160,7 +160,7 @@ public class Login extends AppCompatActivity {
     }
 
     void gotMain() {
-        startActivity(new Intent(Login.this, MainActivity.class));
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
     }
 }

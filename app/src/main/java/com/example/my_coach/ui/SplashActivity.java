@@ -10,11 +10,11 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.my_coach.R;
-import com.example.my_coach.ui.auth.Login;
+import com.example.my_coach.ui.auth.LoginActivity;
 
 import java.util.Locale;
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
     private String currentlanguage, language;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class Splash extends AppCompatActivity {
         getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
         new Handler().postDelayed(() -> {
 
-            startActivity(new Intent(Splash.this, Login.class));
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             finish();
         }, 3000);
 

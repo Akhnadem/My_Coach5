@@ -22,7 +22,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registration extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     //view
     private EditText tedName, tedPhone, tedEmail, tedPassword;
@@ -64,9 +64,9 @@ public class Registration extends AppCompatActivity {
             validationdata();
 
         });
-        //on click to finesh this fragment
+        //on click to finesh this Activity
         findViewById(R.id.rt_back).setOnClickListener(v -> {
-            startActivity(new Intent(Registration.this, Login.class));
+            startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
 
         });
     }
@@ -238,13 +238,13 @@ public class Registration extends AppCompatActivity {
 
                         if (task.isSuccessful()){
                             tprogressBar.setVisibility(View.GONE);
-                            new AlertDialog.Builder(Registration.this)
+                            new AlertDialog.Builder(RegistrationActivity.this)
                                     .setTitle("Congratulations")
                                     .setMessage("Account Created Successfuly")
                                     .setCancelable(false)
                                     .setPositiveButton("ok", (dialog, which) -> {
 
-                                        startActivity(new Intent(Registration.this,Login.class));
+                                        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
 
                                     })
                                     .create().show();
@@ -262,7 +262,7 @@ public class Registration extends AppCompatActivity {
     }
 
     void showAlert(String msg ){
-        new AlertDialog.Builder(Registration.this)
+        new AlertDialog.Builder(RegistrationActivity.this)
                 .setTitle("Error")
                 .setMessage(msg).
                 setPositiveButton("ok",null)

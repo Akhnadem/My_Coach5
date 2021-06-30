@@ -22,7 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
-import com.example.my_coach.ui.Splash;
+import com.example.my_coach.ui.SplashActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -147,7 +147,7 @@ public class Sitting_Activity extends AppCompatActivity {
         configuration.locale=l;
         getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
 
-        Intent intent = new Intent(Sitting_Activity.this, Splash.class);
+        Intent intent = new Intent(Sitting_Activity.this, SplashActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 

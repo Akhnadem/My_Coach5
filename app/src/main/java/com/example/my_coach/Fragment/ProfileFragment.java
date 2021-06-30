@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.my_coach.BuildConfig;
 import com.example.my_coach.R;
 import com.example.my_coach.Sitting_Activity;
-import com.example.my_coach.ui.Splash;
+import com.example.my_coach.ui.SplashActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -114,7 +114,7 @@ public class ProfileFragment extends Fragment {
                                 .clear()
                                 .apply();
                         firebaseAuth.signOut();
-                        startActivity(new Intent(getActivity(), Splash.class));
+                        startActivity(new Intent(getActivity(), SplashActivity.class));
                         getActivity().finish();
                     })
                     .setNegativeButton("no", null)

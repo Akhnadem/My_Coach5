@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.my_coach.Model.SportModel;
 import com.example.my_coach.R;
@@ -29,23 +28,34 @@ public class SportsActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private List<SportModel> list;
     private SportAdapter adapter;
-    private SwipeRefreshLayout swipeRefreshLayout;
     private Boolean isFirstOpen=true;
     private EditText SearchBox;
+     //test favorite
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sports);
+        //test fav
+
         progressBar = findViewById(R.id.progres_sports_categories);
-        swipeRefreshLayout = findViewById(R.id.SwipSports);
         recyclerView = findViewById(R.id.recycler_sports_categories);
         firestore = FirebaseFirestore.getInstance();
         SearchBox=findViewById (R.id.search_Sport);
 
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
+        //test
+
+
+
+
+
+
         list = new ArrayList<>();
 
         adapter = new SportAdapter(this, list);
@@ -70,20 +80,13 @@ public class SportsActivity extends AppCompatActivity {
          });
 
         getSportsData();
-        swipeRefreshLayout.setColorSchemeColors(
-                getResources().getColor( R.color.color_button),
-                getResources().getColor( R.color.blue),
-                getResources().getColor( R.color.white)
-        );
 
-        getSportsData();
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            
-            getSportsData();
-            swipeRefreshLayout.setRefreshing(false);
-        });
+
+
+
     }
-    private void filter(String text) {
+    private void filter(String text)
+    {
         ArrayList<SportModel> filterdList=new ArrayList<> ();
         for (SportModel sportModel :list){
             if (sportModel.getName ().toLowerCase ().contains (text.toLowerCase ())){

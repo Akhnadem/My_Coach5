@@ -79,11 +79,14 @@ android:background="@drawable/cardview_b"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal">
-                <ImageView
+                <ImageButton
+                    android:id="@+id/Favourite_coa"
+
                     android:layout_width="50dp"
                     android:layout_weight="1"
                     android:layout_height="50dp"
                     android:padding="8dp"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/ic_favorite"/>
 
 

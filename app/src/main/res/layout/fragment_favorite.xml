@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_home"
     tools:context=".Fragment.FavoriteFragment">
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_fav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textColor="@color/white"
-        android:text="" />
+        android:layout_height="match_parent"
+        android:paddingTop="60dp"
+        android:layout_margin="3dp"  />
+
+
 
 </RelativeLayout>
